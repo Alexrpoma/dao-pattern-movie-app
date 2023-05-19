@@ -8,5 +8,5 @@ public interface MovieDAO {
   int insertMovie(Movie movie);
   int deleteMovie(int id);
   Optional<Movie> selectMovieById(int id);
-  void UpdateMovie(int in); // TODO: Update
+  Optional<Movie> updateMovie(Movie movie, int id); // TODO: Update
 }

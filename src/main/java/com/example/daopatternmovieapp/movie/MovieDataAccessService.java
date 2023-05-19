@@ -1,8 +1,11 @@
 package com.example.daopatternmovieapp.movie;
 
+import org.springframework.stereotype.Repository;
+
 import java.util.List;
 import java.util.Optional;
 
+@Repository
 public class MovieDataAccessService implements MovieDAO{
   @Override
   public List<Movie> selectMovies() {
@@ -25,7 +28,7 @@ public class MovieDataAccessService implements MovieDAO{
   }
 
   @Override
-  public void UpdateMovie(int in) {
-
+  public Optional<Movie> updateMovie(Movie movie, int id) {
+    throw new UnsupportedOperationException("not implemented");
   }
 }

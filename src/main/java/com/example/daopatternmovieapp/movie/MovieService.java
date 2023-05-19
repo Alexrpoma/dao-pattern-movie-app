@@ -1,10 +1,12 @@
 package com.example.daopatternmovieapp.movie;
 
 import com.example.daopatternmovieapp.exceptions.NotFoundException;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class MovieService {
 
   private final MovieDAO movieDAO;
@@ -39,6 +41,12 @@ public class MovieService {
 
   public Movie getMovie(int id) {
     return movieDAO.selectMovieById(id).orElseThrow(
+      () -> new NotFoundException(String.format("Movie with id %s not found.", id))
+    );
+  }
+
+  public Movie updateMovie(Movie movie, Integer id) {
+    return movieDAO.updateMovie(movie, id).orElseThrow(
       () -> new NotFoundException(String.format("Movie with id %s not found.", id))
     );
   }
