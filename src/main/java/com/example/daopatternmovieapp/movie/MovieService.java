@@ -1,5 +1,7 @@
 package com.example.daopatternmovieapp.movie;
 
+import com.example.daopatternmovieapp.exceptions.NotFoundException;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -31,13 +33,13 @@ public class MovieService {
         throw new IllegalStateException("oops could not delete movie");
       }
     }, () -> {
-        throw new IllegalStateException("oops could not delete movie");
+        throw new NotFoundException(String.format("Movie with %d not found.", id));
     });
   }
 
   public Movie getMovie(int id) {
     return movieDAO.selectMovieById(id).orElseThrow(
-      () -> new IllegalStateException("not found")
+      () -> new NotFoundException(String.format("Movie with id %s not found.", id))
     );
   }
 }
