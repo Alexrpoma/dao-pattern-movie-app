@@ -1,13 +1,22 @@
-app:
+spring:
   datasource:
-    main:
-      driver-class-name: org.postgresql.Driver
-      jdbc-url: jdbc:postgresql://localhost:5432/dao-movie-db
-      username: Alex
-      password: alex
-      pool-size: 30
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/dao-movie-db
+    username: Alex
+    password: alex
+    hikari:
+      maximum-pool-size: 30
+
 
 server:
   error:
     include-binding-errors: always
     include-message: always
+
+#app:
+#  datasource:
+#    driver-class-name: org.postgresql.Driver
+#    url: jdbc:postgresql://localhost:5432/dao-movie-db
+#    username: Alex
+#    password: alex
+#    pool-size: 30
