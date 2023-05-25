@@ -38,7 +38,11 @@ public class MovieDataAccessService implements MovieDAO{
 
   @Override
   public Optional<Movie> selectMovieById(int id) {
-    throw new UnsupportedOperationException("not implemented");
+    String sql = """
+        SELECT id, name, release_date FROM movie  WHERE id=?
+      """;
+    List<Movie> movies = jdbcTemplate.query(sql, new MovieRowMapper(), id);
+    return movies.stream().findFirst();
   }
 
   @Override
